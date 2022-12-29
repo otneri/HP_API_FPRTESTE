@@ -1,29 +1,27 @@
 import styled from "styled-components";
 import background from '../../assets/background.png'
-import linha from '../../assets/linha.png'
-// import grifinoria from '../../assets/grifinoria.png'
-// import sonserina from '../../assets/sonserina.png'
-// import lufalufa from '../../assets/lufa-lufa.png'
-// import cornival from '../../assets/cornival.png'
-import escudo from '../../assets/escudo.png'
-
 
 
 export const Bar = styled.div`
     background-color: #A6955A;
-    padding: 2em;
+    padding: 1em;
 
 `
 export const HomeBackground = styled.div`
     background-image: url(${background}) ;
-    height: 100vh;
+    position: absolute;
+    height: max-content;
     width: 100%;
     background-repeat: no-repeat;
     background-size: cover;
 `
 
 export const DivLogo = styled.div`
-    padding: 10em 0em;
+    padding: 0em 0em;
+    display: flex;
+    flex-direction: column;
+    gap: 5em;
+    align-items: center;
     
 `
 export const DivEscudo = styled.div`
@@ -40,13 +38,22 @@ export const DivCasas = styled.div`
     align-items: center;
     justify-content: space-around;
     width: 100%;
-    
+    flex-wrap: wrap;
+    flex-grow: 3;
+    flex-shrink: 6;
 `
 export const DivConteinerStld = styled.div `
     margin: 0em 5em;
+    padding: 4em 0em;
+    gap: 4em;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    justify-content: flex-start;
+    justify-content: space-between;
 `
 
+export const LinhaStld = styled.img `
+   @media  screen and (max-width: 1400px) {
+    max-width: 50%;
+   }
+`

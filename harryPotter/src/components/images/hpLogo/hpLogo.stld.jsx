@@ -6,3 +6,10 @@ export const HpLogostld = styled.img`
 
 `
 
+export const IconStld = styled.img`
+    cursor: pointer;
+    &:hover{
+        opacity: 0.5;
+    }
+`
+

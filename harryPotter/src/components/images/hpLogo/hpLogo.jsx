@@ -1,12 +1,6 @@
 import hpLogo from '../../../assets/bpo 1.png'
-import linha from '../../../assets/linha.png'
-import escudo from '../../../assets/escudo.png'
-import grifinoria from '../../../assets/grifinoria.png'
-import sonserina from '../../../assets/sonserina.png'
-import lufalufa from '../../../assets/lufa-lufa.png'
-import cornival from '../../../assets/corvinal.png'
-import {HpLogostld} from './hpLogo.stld'
-
+import {HpLogostld, IconStld} from './hpLogo.stld'
+import PropTypes from 'prop-types'
 
 export const HpLogo = () => {
     return (
@@ -14,39 +8,13 @@ export const HpLogo = () => {
     )
 }
 
-export const Linha = () => {
+export const Imagem = ({children, onClick}) => {
     return (
-        <img src={linha}/>
+        <IconStld src={children} onClick={onClick}/>
     )
 }
 
-export const Escudo = () => {
-    return (
-        <img src={escudo}/>
-    )
+Imagem.proptypes = {
+    children: PropTypes.func,
+    onClick: PropTypes.func,
 }
-
-export const Grifinoria = () => {
-    return (
-        <HpLogostld src={grifinoria}/>
-    )
-}
-
-export const Sonserina = () => {
-    return (
-        <HpLogostld src={sonserina}/>
-    )
-}
-
-export const Lufalufa = () => {
-    return (
-        <HpLogostld src={lufalufa}/>
-    )
-}
-
-export const Cornival = () => {
-    return (
-        <HpLogostld src={cornival}/>
-    )
-}
-
