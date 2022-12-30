@@ -11,18 +11,20 @@ export const Header = styled.header`
 
 export const Logostld = styled.img`
     padding: 1em;
+    cursor: pointer;
     
 `
 export const Mainstld = styled.main`
     background-image: url(${back});
-    height: 100vh;
+    height: 100%;
+    background-repeat: repeat;
 `
 export const GridPerson = styled.div`
     width: 100%;
     display: flex ;
-    align-items: center;
+    align-items: flex-end;
     justify-content: space-between;
-    gap: 1em;
+    gap: 3em;
     flex-wrap: wrap;
 `
 
@@ -36,10 +38,17 @@ export const Persons = styled.div`
 export const PersonImg = styled.img`
     border-color: #A6955A;
     border-style: solid;
-    padding: 1em;
+    width: 15em;
+    height: 20em;
+    @media only screen and (max-width: 350px) {
+        width: 70% ;
+        height: 70%;
+
+    }
 `
 
 export const PersonName = styled.a`
+    text-align: center;
     font-size: x-large;
     cursor: pointer;
     color: #A6955A ;
@@ -80,6 +89,7 @@ export const ButtonModal = styled.button `
     border: none;
     color: #031C29;
     background-color: #A6955A;
+    cursor: pointer;
 `
 
 export const DivButton = styled.div`

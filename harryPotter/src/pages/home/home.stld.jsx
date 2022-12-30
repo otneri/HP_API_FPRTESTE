@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import background from '../../assets/background.png'
+import {Link} from 'react-router-dom'
 
 
 export const Bar = styled.div`
@@ -7,6 +8,7 @@ export const Bar = styled.div`
     padding: 1em;
 
 `
+
 export const HomeBackground = styled.div`
     background-image: url(${background}) ;
     position: absolute;
@@ -55,5 +57,9 @@ export const DivConteinerStld = styled.div `
 export const LinhaStld = styled.img `
    @media  screen and (max-width: 1400px) {
     max-width: 50%;
+   }
+
+   @media  screen and (max-width: 540px) {
+    max-width: 10%;
    }
 `
