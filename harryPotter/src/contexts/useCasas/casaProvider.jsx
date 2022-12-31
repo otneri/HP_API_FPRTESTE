@@ -2,8 +2,8 @@ import { createContext, useState } from "react";
 import PropTypes from "prop-types";
 
 export const CasaContexto = createContext({
-    casa: null,
-    setCasa: () => {}
+  casa: null,
+  setCasa: () => {},
 });
 
 export const CasaProvider = ({ children }) => {

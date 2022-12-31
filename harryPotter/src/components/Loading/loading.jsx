@@ -1,10 +1,9 @@
-import { LoadingDivStyled, OverlayStyled } from "./loading.stld"
+import { LoadingDivStyled, OverlayStyled } from "./loading.stld";
 
 export const Loading = () => {
-    return(
-        <OverlayStyled>
-            <LoadingDivStyled/>               
-        </OverlayStyled>
-               
-    )
-}
+  return (
+    <OverlayStyled>
+      <LoadingDivStyled />
+    </OverlayStyled>
+  );
+};

@@ -1,12 +1,11 @@
-import { Buttonstld } from "./Button.std"
+import { Buttonstld } from "./Button.std";
 import Proptypes from "prop-types";
 
-export const Button = ({children, handleClick}) => {
-    return <Buttonstld onClick={handleClick}>{children}</Buttonstld>
-}
+export const Button = ({ children, handleClick }) => {
+  return <Buttonstld onClick={handleClick}>{children}</Buttonstld>;
+};
 
 Button.propTypes = {
-    children: Proptypes.node,
-    handleClick: Proptypes.func,
-  };
-  
+  children: Proptypes.node,
+  handleClick: Proptypes.func,
+};

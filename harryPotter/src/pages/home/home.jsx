@@ -22,29 +22,20 @@ import { GetAllChar } from "../../services/hpAPI";
 import { useCasa } from "../../contexts/useCasas/useCasas";
 
 export const Home = () => {
-  const [persons, setPersons] = useState([])
-  const {casa, setCasa} = useCasa()
-  
+  const [persons, setPersons] = useState([]);
+  const { casa, setCasa } = useCasa();
 
-
-
-  useEffect(()=>{
+  useEffect(() => {
     GetAllChar()
-    .then((response) =>{
-     setPersons(response.data)
-    })
-    .catch((error) => {
-     console.log('ERRO: ', error);
-    })
-    
- }, [])
+      .then((response) => {
+        setPersons(response.data);
+      })
+      .catch((error) => {
+        console.log("ERRO: ", error);
+      });
+  }, []);
 
-  const filtraPersonagensCasa = (house) => {
-    
-    const filtro = persons.filter(pessoa => pessoa.house === house)
-    return console.log(filtro) ;
-  } 
-  
+ 
   return (
     <>
       <Bar />
@@ -64,16 +55,28 @@ export const Home = () => {
           </DivEscudo>
           <DivCasas>
             <Link to="/personsHome">
-              <Imagem children={grifinoria}  onClick={() => setCasa("Gryffindor")}/>
+              <Imagem
+                children={grifinoria}
+                onClick={() => setCasa("Gryffindor")}
+              />
             </Link>
             <Link to="/personsHome">
-              <Imagem children={sonserina}  onClick={()=> setCasa("Slytherin")}/>
+              <Imagem
+                children={sonserina}
+                onClick={() => setCasa("Slytherin")}
+              />
             </Link>
             <Link to="/personsHome">
-              <Imagem children={lufalufa}  onClick={()=> setCasa("Hufflepuff")} />
+              <Imagem
+                children={lufalufa}
+                onClick={() => setCasa("Hufflepuff")}
+              />
             </Link>
             <Link to="/personsHome">
-              <Imagem children={cornival}  onClick={()=> setCasa("Ravenclaw")} />
+              <Imagem
+                children={cornival}
+                onClick={() => setCasa("Ravenclaw")}
+              />
             </Link>
           </DivCasas>
         </DivConteinerStld>

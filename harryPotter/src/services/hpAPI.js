@@ -16,9 +16,3 @@ export const GetAllChar = async () => {
     const dados = await axios.get(`${URL}characters`);
     return dados
 }
-
-// export const GetByHouse = async ({house}) => {
-
-//     const dados = await axios.get(`${URL}:`,house);
-//     return dados
-// }
