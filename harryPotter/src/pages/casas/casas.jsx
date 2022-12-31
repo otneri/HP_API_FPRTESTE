@@ -12,6 +12,7 @@ import {
   TextAtribute,
   ButtonModal,
   DivButton,
+  DivVarinha,
 } from "../personagens/personagens.stld";
 import harry from "../../assets/logo1.png";
 import { DivConteinerStld, DivEscudo, LinhaStld } from "../home/home.stld";
@@ -47,15 +48,20 @@ export const PersonagensCasa = () => {
 const {casa} = useCasa()
 
 console.log(casa);
-  const [modalIsOpen, setIsOpen] = useState(false);
+  
   const [persons, setPersons] = useState([]);
 
-  function openModal() {
-    setIsOpen(true);
+  // Preenchimento do Modal
+  const [modalInfo, setModalInfo] = useState({});
+  function HandleSelecionar(event, param) {
+      setModalInfo(param);
+      
   }
 
-  function closeModal() {
-    setIsOpen(false);
+  // Abertura do modal
+  const [isOpen, setIsOpen] = useState(false);
+  function HandleModal() {
+      setIsOpen(true);
   }
 
   useEffect(()=>{
@@ -80,34 +86,74 @@ console.log(casa);
   return (
     <>
       <Modal
-        isOpen={modalIsOpen}
-        onRequestClose={closeModal}
+        isOpen={isOpen}
+        onRequestClose={()=>setIsOpen(false)}
         style={customStyles}
         contentLabel="Person Detail"
       >
         <DivButton>
-          <ButtonModal onClick={closeModal}>x</ButtonModal>
+          <ButtonModal onClick={()=>setIsOpen(false)}>x</ButtonModal>
         </DivButton>
-        <DivModal>
-          <PersonImg src={escudo} />
+        <DivModal >
 
-          <div>
-            <DivAtributo>
-              <TextAtribute>Hello:</TextAtribute>
-              <Atribute> Yess</Atribute>
+    <PersonImg src={modalInfo?.image}/>
+
+    <div>
+        <DivAtributo>
+            <TextAtribute>Nome:</TextAtribute>
+            <Atribute>{modalInfo?.name} </Atribute>
             </DivAtributo>
+            <DivAtributo>
+            <TextAtribute>Casa:</TextAtribute>
+            <Atribute> {modalInfo?.house}</Atribute>
+            </DivAtributo>
+            <DivAtributo>
+            <TextAtribute>Espécie:</TextAtribute>
+            <Atribute>{modalInfo?.species}</Atribute>
+            </DivAtributo>
+            <DivAtributo>
+            <TextAtribute>Data de Nascimento:</TextAtribute>
+            <Atribute>{modalInfo?.dateOfBirth}</Atribute>
+            </DivAtributo>
+            <DivAtributo>
+            <TextAtribute>Gênero:</TextAtribute>
+            <Atribute> {modalInfo?.gender}</Atribute>
+            </DivAtributo>
+            <DivAtributo>
+            <TextAtribute>Patronus:</TextAtribute>
+            <Atribute> {modalInfo?.patronus}</Atribute>
+            </DivAtributo>
+            <DivAtributo>
+            <TextAtribute>Varinha</TextAtribute>
+            
+            </DivAtributo>   
+        
+                <DivVarinha>
+                <TextAtribute>Madeira:</TextAtribute>
+                <Atribute> {modalInfo?.wand?.wood}</Atribute>
+                </DivVarinha>
+                <DivVarinha>
+                <TextAtribute>Core:</TextAtribute>
+                <Atribute> {modalInfo?.wand?.core}</Atribute>
+                </DivVarinha> 
+                <DivVarinha>
+                <TextAtribute>Comprimento:</TextAtribute>
+                <Atribute> {modalInfo?.wand?.length}</Atribute>
+                </DivVarinha>  
 
             <DivAtributo>
-              <TextAtribute>Hello:</TextAtribute>
-              <Atribute> Yess</Atribute>
+            <TextAtribute>Ancestral:</TextAtribute>
+            <Atribute> {modalInfo?.ancestry}</Atribute>
             </DivAtributo>
-
             <DivAtributo>
-              <TextAtribute>Hello:</TextAtribute>
-              <Atribute> Yess</Atribute>
-            </DivAtributo>
-          </div>
-        </DivModal>
+            <TextAtribute>Ator:</TextAtribute>
+            <Atribute> {modalInfo?.actor}</Atribute>
+            </DivAtributo>    
+        
+    </div>
+
+
+    </DivModal>
       </Modal>
       <Header>
         <Link to='/'><Logostld src={harry} alt="harryPotter" /></Link>
@@ -129,7 +175,7 @@ console.log(casa);
 
                     <Persons key={id} >
                         <PersonImg src={pessoa.image} alt="personagem" />
-                        <PersonName onClick={openModal}>{pessoa.name}</PersonName>
+                        <PersonName onClick={(event)=>{HandleModal();HandleSelecionar(event,pessoa)}}>{pessoa.name}</PersonName>
                     </Persons>
 
                 ))}

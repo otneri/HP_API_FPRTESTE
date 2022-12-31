@@ -97,3 +97,8 @@ export const DivButton = styled.div`
     display: flex;
     justify-content: flex-end;
 `
+
+export const DivVarinha = styled.div `
+    margin-left: 1em;
+    width: 100%;
+`

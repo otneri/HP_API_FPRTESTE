@@ -1,4 +1,4 @@
-import { Atribute, DivAtributo, DivModal, GridPerson, Header, Logostld, Mainstld, PersonImg, PersonName, Persons, TextAtribute,ButtonModal, DivButton } from "./personagens.stld"
+import { Atribute, DivAtributo, DivModal, GridPerson, Header, Logostld, Mainstld, PersonImg, PersonName, Persons, TextAtribute,ButtonModal, DivButton, DivVarinha } from "./personagens.stld"
 import harry from '../../assets/logo1.png'
 import { DivConteinerStld, DivEscudo, LinhaStld } from "../home/home.stld"
 import linha from '../../assets/linha.png'
@@ -32,8 +32,7 @@ const customStyles = {
 
 
 export const Personagens = () => {
-    const [selectPerson, setSelectPerson] = useState([])
-    const [selectedPersonIndex, setSelectedPersonIndex] = useState(0);
+    
   
     const [persons, setPersons] = useState([])
 
@@ -154,22 +153,22 @@ export const Personagens = () => {
                     <Atribute> {modalInfo?.patronus}</Atribute>
                     </DivAtributo>
                      <DivAtributo>
-                    <TextAtribute>Varinha:</TextAtribute>
+                    <TextAtribute>Varinha</TextAtribute>
                     
                     </DivAtributo>   
                 
-                 <DivAtributo>
-                    <TextAtribute>Madeira:</TextAtribute>
-                    <Atribute> {modalInfo?.wand?.wood}</Atribute>
-                    </DivAtributo>
-                    <DivAtributo>
-                    <TextAtribute>Core:</TextAtribute>
-                    <Atribute> {modalInfo?.wand?.core}</Atribute>
-                    </DivAtributo> 
-                    <DivAtributo>
-                    <TextAtribute>Comprimento:</TextAtribute>
-                    <Atribute> {modalInfo?.wand?.length}</Atribute>
-                    </DivAtributo>  
+                        <DivVarinha>
+                        <TextAtribute>Madeira:</TextAtribute>
+                        <Atribute> {modalInfo?.wand?.wood}</Atribute>
+                        </DivVarinha>
+                        <DivVarinha>
+                        <TextAtribute>Core:</TextAtribute>
+                        <Atribute> {modalInfo?.wand?.core}</Atribute>
+                        </DivVarinha> 
+                        <DivVarinha>
+                        <TextAtribute>Comprimento:</TextAtribute>
+                        <Atribute> {modalInfo?.wand?.length}</Atribute>
+                        </DivVarinha>  
 
                     <DivAtributo>
                     <TextAtribute>Ancestral:</TextAtribute>
