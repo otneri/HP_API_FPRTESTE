@@ -32,12 +32,23 @@ const customStyles = {
 
 
 export const Personagens = () => {
-    const [modalIsOpen, setIsOpen] = useState(false);
     const [selectPerson, setSelectPerson] = useState([])
     const [selectedPersonIndex, setSelectedPersonIndex] = useState(0);
   
     const [persons, setPersons] = useState([])
 
+    // Preenchimento do Modal
+    const [modalInfo, setModalInfo] = useState({});
+    function HandleSelecionar(event, param) {
+        setModalInfo(param);
+        
+    }
+
+    // Abertura do modal
+    const [isOpen, setIsOpen] = useState(false);
+    function HandleModal() {
+        setIsOpen(true);
+    }
 
     useEffect(()=>{
        GetAllChar()
@@ -50,37 +61,10 @@ export const Personagens = () => {
        
     }, [])
 
-    const filterPerson = (nome) => {
-        const pessoaFiltrada = persons?.find(pessoa => pessoa?.name === nome)
-
-        console.log(pessoaFiltrada);
-        return pessoaFiltrada 
-    
   
-    }
-    
-    useEffect ((nome)=>{
-        const personagem = filterPerson(nome)
-        return setSelectPerson(personagem)
 
-    },[]
-    
-    )
-     
     
     
-    function openModal() {
-        setIsOpen(true);
-        
-      }
-   
-      function closeModal() {
-        setIsOpen(false);
-      }
-
-
-     
-
 
     return (
         <>
@@ -104,13 +88,13 @@ export const Personagens = () => {
 
             <GridPerson>
                 
-                {               
+                {          
                 persons.length > 0 ?  (persons.map((pessoa, id) => (
 
 
                     <Persons key={id} >
                         <PersonImg src={pessoa.image} alt="personagem" />
-                        <PersonName onClick={openModal}>{pessoa.name}</PersonName>
+                        <PersonName onClick={(event) => {HandleModal();HandleSelecionar(event, pessoa)}}>{pessoa.name}</PersonName>
                     </Persons>
 
                 ))):(<Loading/>)
@@ -128,72 +112,73 @@ export const Personagens = () => {
 
          
             <Modal
-            isOpen={modalIsOpen}    
-            onRequestClose={closeModal}
+            isOpen={isOpen}    
+            onRequestClose={()=>setIsOpen(false)}
             style={customStyles}
             contentLabel="Person Detail"
             >
                 
 
             <DivButton>
-            <ButtonModal onClick={closeModal}>x</ButtonModal>
+            <ButtonModal onClick={()=>setIsOpen(false)}>x</ButtonModal>
             </DivButton>
 
 
             <DivModal >
 
-            <PersonImg src={selectPerson?.image}/>
+            <PersonImg src={modalInfo?.image}/>
 
             <div>
                    <DivAtributo>
                     <TextAtribute>Nome:</TextAtribute>
-                    <Atribute>{selectPerson?.name} </Atribute>
-                    </DivAtributo>
-                   {/* <DivAtributo>
-                    <TextAtribute>Casa:</TextAtribute>
-                    <Atribute> {selectPerson?.house}</Atribute>
+                    <Atribute>{modalInfo?.name} </Atribute>
                     </DivAtributo>
                     <DivAtributo>
+                    <TextAtribute>Casa:</TextAtribute>
+                    <Atribute> {modalInfo?.house}</Atribute>
+                    </DivAtributo>
+                     <DivAtributo>
                     <TextAtribute>Espécie:</TextAtribute>
-                    <Atribute>{selectPerson?.species}</Atribute>
+                    <Atribute>{modalInfo?.species}</Atribute>
                     </DivAtributo>
                     <DivAtributo>
                     <TextAtribute>Data de Nascimento:</TextAtribute>
-                    <Atribute>{selectPerson?.birth}</Atribute>
+                    <Atribute>{modalInfo?.dateOfBirth}</Atribute>
                     </DivAtributo>
                     <DivAtributo>
                     <TextAtribute>Gênero:</TextAtribute>
-                    <Atribute> {selectPerson?.gender}</Atribute>
+                    <Atribute> {modalInfo?.gender}</Atribute>
                     </DivAtributo>
                     <DivAtributo>
                     <TextAtribute>Patronus:</TextAtribute>
-                    <Atribute> {selectPerson?.patronus}</Atribute>
+                    <Atribute> {modalInfo?.patronus}</Atribute>
                     </DivAtributo>
-                    <DivAtributo>
+                     <DivAtributo>
                     <TextAtribute>Varinha:</TextAtribute>
-                    <Atribute> {selectPerson?.wand}</Atribute>
-                    </DivAtributo> 
+                    
+                    </DivAtributo>   
                 
-                    <DivAtributo>
+                 <DivAtributo>
                     <TextAtribute>Madeira:</TextAtribute>
-                    <Atribute> {selectPerson?.wand?.wood}</Atribute>
+                    <Atribute> {modalInfo?.wand?.wood}</Atribute>
                     </DivAtributo>
                     <DivAtributo>
                     <TextAtribute>Core:</TextAtribute>
-                    <Atribute> {selectPerson?.wand?.core}</Atribute>
+                    <Atribute> {modalInfo?.wand?.core}</Atribute>
                     </DivAtributo> 
                     <DivAtributo>
                     <TextAtribute>Comprimento:</TextAtribute>
-                    <Atribute> {selectPerson?.wand?.length}</Atribute>
-                    </DivAtributo> 
+                    <Atribute> {modalInfo?.wand?.length}</Atribute>
+                    </DivAtributo>  
+
                     <DivAtributo>
                     <TextAtribute>Ancestral:</TextAtribute>
-                    <Atribute> {selectPerson?.ancestry}</Atribute>
+                    <Atribute> {modalInfo?.ancestry}</Atribute>
                     </DivAtributo>
                     <DivAtributo>
                     <TextAtribute>Ator:</TextAtribute>
-                    <Atribute> {selectPerson?.actor}</Atribute>
-                    </DivAtributo>   */}
+                    <Atribute> {modalInfo?.actor}</Atribute>
+                    </DivAtributo>    
                 
             </div>
 
