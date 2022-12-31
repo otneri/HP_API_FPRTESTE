@@ -23,6 +23,7 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { GetAllChar } from "../../services/hpAPI";
 import { useCasa } from "../../contexts/useCasas/useCasas";
+import { Loading } from "../../components/Loading/loading";
 
 Modal.setAppElement("#root");
 const customStyles = {
@@ -71,8 +72,7 @@ console.log(casa);
 
 
 
-    const personagensSelect = persons
-    const casaFiltrada = personagensSelect?.filter(pessoa => pessoa?.house === casa)
+    const casaFiltrada = persons?.filter(pessoa => pessoa?.house === casa)
     console.log(casaFiltrada);  
 
 
@@ -122,7 +122,7 @@ console.log(casa);
 
           <GridPerson>
             {               
-                !casaFiltrada? (<Loading/> ):
+                casaFiltrada.length === 0? (<Loading/> ):
                 
                 casaFiltrada.map((pessoa, id) => (
 

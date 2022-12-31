@@ -2,6 +2,7 @@
 import { BrowserRouter } from 'react-router-dom'
 import { Global } from '../themes/GlobalStyle'
 import { CasaProvider } from './contexts/useCasas/casaProvider'
+import { ModalProvider } from './contexts/useModal/modalProvider'
 import { PersonagensCasa } from './pages/casas/casas'
 import { Home } from './pages/home/home'
 import { Personagens } from './pages/personagens/personagens'
@@ -13,11 +14,11 @@ function App() {
     <div className="App">
         <Global/>
         <CasaProvider>
-
-          <BrowserRouter>
-            <Rotas/>
-          </BrowserRouter>
-
+          <ModalProvider>
+            <BrowserRouter>
+              <Rotas/>
+            </BrowserRouter>
+          </ModalProvider>
         </CasaProvider>
       
 

@@ -37,6 +37,7 @@ export const Persons = styled.div`
 
 export const PersonImg = styled.img`
     border-color: #A6955A;
+
     border-style: solid;
     width: 15em;
     height: 20em;

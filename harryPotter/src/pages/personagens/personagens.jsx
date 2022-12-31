@@ -34,6 +34,7 @@ const customStyles = {
 export const Personagens = () => {
     const [modalIsOpen, setIsOpen] = useState(false);
     const [selectPerson, setSelectPerson] = useState([])
+    const [selectedPersonIndex, setSelectedPersonIndex] = useState(0);
   
     const [persons, setPersons] = useState([])
 
@@ -49,18 +50,24 @@ export const Personagens = () => {
        
     }, [])
 
-
     const filterPerson = (nome) => {
         const pessoaFiltrada = persons?.find(pessoa => pessoa?.name === nome)
-        // setSelectPerson(pessoaFiltrada)
+
         console.log(pessoaFiltrada);
         return pessoaFiltrada 
-    }
-     filterPerson('Ron Weasley')
-
-
+    
   
+    }
+    
+    useEffect ((nome)=>{
+        const personagem = filterPerson(nome)
+        return setSelectPerson(personagem)
 
+    },[]
+    
+    )
+     
+    
     
     function openModal() {
         setIsOpen(true);
@@ -98,9 +105,7 @@ export const Personagens = () => {
             <GridPerson>
                 
                 {               
-                !persons? (<Loading/> ):
-                
-                persons.map((pessoa, id) => (
+                persons.length > 0 ?  (persons.map((pessoa, id) => (
 
 
                     <Persons key={id} >
@@ -108,10 +113,12 @@ export const Personagens = () => {
                         <PersonName onClick={openModal}>{pessoa.name}</PersonName>
                     </Persons>
 
-                ))}
+                ))):(<Loading/>)
+                
+                }
 
                 
-
+                 
                 
             </GridPerson>
 
@@ -119,13 +126,14 @@ export const Personagens = () => {
 
             </Mainstld>
 
-          
-                <Modal
-            isOpen={modalIsOpen}
+         
+            <Modal
+            isOpen={modalIsOpen}    
             onRequestClose={closeModal}
             style={customStyles}
             contentLabel="Person Detail"
             >
+                
 
             <DivButton>
             <ButtonModal onClick={closeModal}>x</ButtonModal>
@@ -137,14 +145,11 @@ export const Personagens = () => {
             <PersonImg src={selectPerson?.image}/>
 
             <div>
-                
-                    {/* <DivAtributo>
+                   <DivAtributo>
                     <TextAtribute>Nome:</TextAtribute>
                     <Atribute>{selectPerson?.name} </Atribute>
                     </DivAtributo>
-
-
-                    <DivAtributo>
+                   {/* <DivAtributo>
                     <TextAtribute>Casa:</TextAtribute>
                     <Atribute> {selectPerson?.house}</Atribute>
                     </DivAtributo>
@@ -181,8 +186,6 @@ export const Personagens = () => {
                     <TextAtribute>Comprimento:</TextAtribute>
                     <Atribute> {selectPerson?.wand?.length}</Atribute>
                     </DivAtributo> 
-
-
                     <DivAtributo>
                     <TextAtribute>Ancestral:</TextAtribute>
                     <Atribute> {selectPerson?.ancestry}</Atribute>
@@ -190,7 +193,7 @@ export const Personagens = () => {
                     <DivAtributo>
                     <TextAtribute>Ator:</TextAtribute>
                     <Atribute> {selectPerson?.actor}</Atribute>
-                    </DivAtributo>  */}
+                    </DivAtributo>   */}
                 
             </div>
 
@@ -200,6 +203,10 @@ export const Personagens = () => {
 
             )
             </Modal>
+        
+            
+
+            
         </>
     )
 }
